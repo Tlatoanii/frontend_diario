@@ -10,6 +10,16 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // Esto le dice a Sass que ignore las advertencias del código de terceros (Bootstrap)
+        quietDeps: true,
+        // Por si alguna advertencia se escapa al quietDeps en las nuevas versiones
+        silenceDeprecations: ['import', 'global-builtin', 'color-functions', 'if-function']
+      }
+    }
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
